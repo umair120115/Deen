@@ -183,7 +183,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     'http://192.168.1.5:3000',
-    # 'https://deen-1.onrender.com'
+    'https://deen-1.onrender.com'
         # React app running on your PC
 ]
 
