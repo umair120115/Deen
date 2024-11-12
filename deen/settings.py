@@ -163,9 +163,9 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 # Specifying   where to find the React build files
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'C:\\PRojectsss\\Discuss\\frontend\\dist'),  
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR / "frontend/assets")  
+]
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, "build", "static")]
 
 # STATIC_URL = "static/"

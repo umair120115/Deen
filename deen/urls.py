@@ -21,6 +21,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from hadith.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -38,6 +39,7 @@ urlpatterns = [
     path('hadith/accept_request/',accept_friend_request,name='accepted_friend_request'),
     path('hadith/delete_request/',decline_friend_request,name="delete_request"),
     path('hadith/friends/',Friends.as_view(),name='your_friends'),
+    path('', TemplateView.as_view(template_name='index.html')),
     # path('hadith/friends/', UserFilter.as_view(), name='friend-list'),
     
 ]
