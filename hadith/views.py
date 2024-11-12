@@ -77,7 +77,7 @@ class UpdateDelete(generics.RetrieveUpdateDestroyAPIView):
 
 class PostView(generics.ListCreateAPIView):
     serializer_class = PostSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     queryset = Post.objects.select_related('user')
 
     def perform_create(self, serializer):

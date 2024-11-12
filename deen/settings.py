@@ -14,9 +14,12 @@ from pathlib import Path
 from datetime import timedelta
 import os
 from dotenv import load_dotenv
-import django_heroku
+import dj_database_url
+
+
 
 load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -65,8 +68,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-# Activate Django-Heroku settings
-django_heroku.settings(locals())
+
 
 ROOT_URLCONF = "deen.urls"
 
@@ -102,11 +104,23 @@ CHANNEL_LAYERS = {
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    # "default": {
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": BASE_DIR / "db.sqlite3",
+    # }
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    # 'default': {
+    #     'ENGINE': 'djongo',
+    #     'NAME': 'admin',  # Replace with your database name
+    #     'ENFORCE_SCHEMA': False,       # Set to True if you want Django to enforce schema
+    #     'CLIENT': {
+    #         'host': 'mongodb+srv://ua16453:2NIk3tDjkSlKXZpZ@cluster0.lfksd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',  # Replace with MongoDB URI
+    #         # 'username': 'ua16453',          # Optional, only if authentication is required
+    #         # 'password': '2NIk3tDjkSlKXZpZ',          # Optional, only if authentication is required
+    #     }
+    # }
 }
+
 
 
 # Password validation
@@ -149,9 +163,10 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 # Specifying   where to find the React build files
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'C:\\PRojectsss\\Discuss\\frontend\\dist'),  
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'C:\\PRojectsss\\Discuss\\frontend\\dist'),  
+# ]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "build", "static")]
 
 # STATIC_URL = "static/"
 
@@ -167,7 +182,9 @@ AUTH_USER_MODEL = "hadith.AppUser"
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
-    'http://192.168.1.5:3000',  # React app running on your PC
+    'http://192.168.1.5:3000',
+    # 'https://deen-1.onrender.com'
+        # React app running on your PC
 ]
 
 REST_FRAMEWORK = {

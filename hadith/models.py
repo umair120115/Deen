@@ -27,8 +27,8 @@ class AppUserManager(BaseUserManager):
 class AppUser(AbstractBaseUser):
     username = models.CharField(unique=True,  max_length=100)
     email = models.EmailField(unique=True)
-    password = models.CharField(max_length=15)
-    Name = models.CharField(max_length=50)
+    password = models.CharField(max_length=100)
+    Name = models.CharField(max_length=100)
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
