@@ -75,7 +75,7 @@ ROOT_URLCONF = "deen.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / 'static'/ 'frontend'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -159,12 +159,12 @@ USE_TZ = True
 
 
 
-# Configure static and media files for Heroku
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 # Specifying   where to find the React build files
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR / "frontend/assets")  
+    os.path.join(BASE_DIR, 'static' )  
 ]
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, "build", "static")]
 
